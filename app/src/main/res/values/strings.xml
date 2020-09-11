@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Unsplash</string>
+    <string name="view_url_title">Select the app to download image</string>
+    <string name="no_description">No description</string>
 </resources>
