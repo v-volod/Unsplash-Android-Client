@@ -3,6 +3,9 @@ plugins {
     id 'kotlin-android'
 }
 
+def apiProperties = new Properties()
+apiProperties.load(new FileInputStream(rootProject.file("api.properties")))
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -18,6 +21,10 @@ android {
     }
 
     buildTypes {
+        all {
+            buildConfigField("String", "UNSPLASH_API_ACCESS_KEY", "\"${apiProperties['api.key']}\"")
+            buildConfigField("String", "UNSPLASH_API_SECRET_KEY", "\"${apiProperties['api.secret']}\"")
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
